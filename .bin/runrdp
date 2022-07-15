@@ -1,22 +1,83 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-while true; do
-    read -p "Do you want to remotely connect to your WORKSTATION ? [Y/n] " yn
-    case $yn in
-        [Yy]* ) 
+#source ~/.config/freerdp/Known-Hosts
 
-            read -p "Enter Remote Desktop USER: PCS\\" -i gabriel.silva -e REMOTE_USER ; echo  
-            read -p "Enter Remote Desktop PASSWORD: " REMOTE_PASSWORD ; echo  
-            read -p "Enter Remote Desktop IP: " REMOTE_IP ; echo  
-            xfreerdp /u:"PCS\\$REMOTE_USER" /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1039; break;;
+if [ -f $HOME/.config/freerdp/Known-Hosts ]; then
+    source $HOME/.config/freerdp/Known-Hosts
+else
+    mkdir $HOME/.config/freerdp
+    touch $HOME/.config/freerdp/Known-Hosts
+fi
 
-        [Nn]* )
+if [ "$REMOTEDESKTOP" = "" ]; then
 
-            read -p "Enter Remote Desktop USER: " REMOTE_USER ; echo  
-            read -p "Enter Remote Desktop PASSWORD: " REMOTE_PASSWORD ; echo  
-            read -p "Enter Remote Desktop IP: " REMOTE_IP ; echo  
-            xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1039; break;;
+    read -p "Enter Remote Desktop USER: " REMOTE_USER ; echo  ;
+    read -p "Enter Remote Desktop PASSWORD: " REMOTE_PASSWORD ; echo  ;
+    read -p "Enter Remote Desktop IP: " REMOTE_IP ; echo  ;
+    REMOTEDESKTOP="$REMOTE_USER@$REMOTE_IP"
 
-        * ) echo "Please answer with Y[es] or N[o].";;
-    esac
-done
+    while true; do
+        read -p "Save information for ease of use ? [Y/n] " yn
+        case $yn in
+            [Yy]* )
+
+                cp /dev/null $HOME/.dotfiles/.config/freerdp/Known-Hosts
+                echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                echo "Saved !" ; sleep 2 ; break;;
+
+            [Nn]* )
+
+                echo "Not saved." ; sleep 2 ; break;;
+
+            * ) echo "Please answer with Y[es] or N[o].";;
+        esac
+    done
+
+    xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1039
+
+elif [ ! "$REMOTEDESKTOP" = "" ]; then
+
+    while true; do
+        read -p "Would you like to connect to $REMOTEDESKTOP ? [Y/n] " yn
+        case $yn in
+            [Yy]* )
+
+                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1039 ; break;;
+
+            [Nn]* )
+
+                read -p "Enter Remote Desktop USER: " REMOTE_USER ; echo  ;
+                read -p "Enter Remote Desktop PASSWORD: " REMOTE_PASSWORD ; echo  ;
+                read -p "Enter Remote Desktop IP: " REMOTE_IP ; echo  ;
+                REMOTEDESKTOP="$REMOTE_USER@$REMOTE_IP" ;
+
+                while true; do
+                    read -p "Save information for ease of use ? [Y/n] " yn
+                    case $yn in
+                        [Yy]* )
+
+                            cp /dev/null $HOME/.dotfiles/.config/freerdp/Known-Hosts
+                            echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                            echo "Saved !" ; sleep 2 ; break;;
+
+                        [Nn]* )
+
+                            echo "Not saved." ; sleep 2 ; break;;
+
+                        * ) echo "Please answer with Y[es] or N[o].";;
+                    esac
+                done
+
+                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1039 ; break;;
+
+            * ) echo "Please answer with Y[es] or N[o].";;
+        esac
+    done
+
+fi
