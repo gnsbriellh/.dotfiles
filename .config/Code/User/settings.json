@@ -1,0 +1,114 @@
+{
+    /* Extentions Settings*/
+    
+    // Prettier - Code formatter (Auto Apply on Save).
+    "editor.formatOnSave": false,
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    
+    // Auto Rename Tag (Rename Tags).
+    "auto-rename-tag.activationOnLanguage": [
+        "html", "xml", "json"
+    ],
+    
+    // GitLens.
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    // Confirm before synchronizing git repositories
+    "git.confirmSync": false,
+    // Auto fetch from git repositories
+    "git.autofetch": true,
+    
+    // Material Icon Theme (Icons).
+    "workbench.iconTheme": "material-icon-theme",
+    
+    // One Dark Pro (Theme).
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
+    "workbench.preferredLightColorTheme": "One Dark Pro Darker",
+    "workbench.preferredHighContrastColorTheme": "One Dark Pro Darker",
+    "workbench.preferredHighContrastLightColorTheme": "One Dark Pro Darker",
+    
+    /* VSCode Font */
+    
+    // Controls the font in the editor.
+    "editor.fontFamily": "FiraCode NF",
+    "editor.fontSize": 16,
+    // Controls the font for CodeLens.
+    "editor.codeLensFontFamily": "FiraCode NF",
+    "editor.codeLensFontSize": 16,
+    // Controls the font in the debug console.
+    "debug.console.fontFamily": "FiraCode NF",
+    "debug.console.fontSize": 16,
+    // Controls the font for the terminal.
+    "terminal.integrated.fontFamily": "FiraCode NF",
+    "terminal.integrated.fontSize": 16,
+    // Controls the Font for Input Messages.
+    "scm.inputFontFamily": "FiraCode NF",
+    "scm.inputFontSize": 16,
+    // Controls the font of inlay hints in the editor.
+    "editor.inlayHints.fontFamily": "FiraCode NF",
+    "editor.inlayHints.fontSize": 16,
+    // Controls the font used in the Markdown preview.
+    "markdown.preview.fontFamily": "FiraCode NF",
+    "markdown.preview.fontSize": 16,
+    // controls the font for the output text for notebook cells.
+    "notebook.outputFontFamily": "FiraCode NF",
+    "notebook.outputFontSize": 16,
+    
+    /* VSCode Settings */
+    
+    // Controls the minimap
+    "editor.minimap.enabled": false,
+    "editor.minimap.scale": 2,
+    // Controls the option to use vscode built-in auto rename tag.
+    "editor.linkedEditing": false,
+    // Controls the option to preview files insted of opening them.
+    "workbench.editor.enablePreview": false,
+    // Controls the side bar location.
+    "workbench.sideBar.location": "right",
+    // Controls whether the editor shows CodeLens.
+    "diffEditor.codeLens": true,
+    // Controls the position of snippets suggetions.
+    "editor.snippetSuggestions": "top",
+    // If true, then Emmet suggestions will show up as snippets allowing you to order them as per "editor.snippetSuggestions" setting.
+    "emmet.showSuggestionsAsSnippets": true,
+    // Controls if vscode should add a final line when saving files.
+    "files.insertFinalNewline": true,
+    // Controls the ability to wrap vscpde tabs.
+    "workbench.editor.wrapTabs": true,
+    // Controls the ability to confirm exit command before closing vscode
+    "window.confirmBeforeClose": "never",
+    // Controls when the startup prompt to trust a workspace is shown.
+    "security.workspace.trust.startupPrompt": "always",
+    // Controls whether the editor shows white spaces or how.
+    "editor.renderWhitespace": "boundary",
+    // Controls the startup of vscode
+    "window.restoreWindows": "folders",
+    "workbench.startupEditor": "newUntitledFile",
+    // Controls the button to use the multi cursor
+    "editor.multiCursorModifier": "ctrlCmd",
+    // Controls whether the editor should wrap words or how.
+    "editor.wordWrap": "off",
+    // Controls the option to show hints on new untitled files.
+    "workbench.editor.untitled.hint": "text",
+    // Controls the number of spaces a tab is equal to.
+    "editor.tabSize": 4,
+    // Group the Folders listing
+    "explorer.compactFolders": false,
+    // Zoom level
+    "window.zoomLevel": 0,
+    // Confirm to Delete a File
+    "explorer.confirmDelete": false,
+    // Use Login Shell on the Integrated Terminal
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "bash",
+        "args": ["-l"]
+      }
+    }
+}

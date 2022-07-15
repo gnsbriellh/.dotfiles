@@ -1,0 +1,11 @@
+[core]
+	editor = code --wait
+[user]
+	name = gnsbriellh
+	email = 106001507+gnsbriellh@users.noreply.github.com
+[init]
+	defaultBranch = main
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
