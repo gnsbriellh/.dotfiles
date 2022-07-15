@@ -10,7 +10,8 @@ colors = {
 
     "arch" : "#56b6c2",   # Arch Logo Color
     "wds"  : "#E84A5F",   # Group Box Selection Color
-    "wina" : "#56b6c2",   # Window Name Text Color
+    "wina" : "#2c313c",   # Window Name Text Color
+    #"wina" : "#56b6c2",   # Window Name Text Color
     "volu" : "#e5c07b",   # Volume Icon and Text Color
     "upda" : "#e06c75",   # Update Icon and Text Color
     "cpu"  : "#cccccc",   # Processor Icon and Text Color
