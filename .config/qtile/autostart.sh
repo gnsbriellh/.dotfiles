@@ -2,6 +2,7 @@
 
 # Set Monitor Resolution and Refresh Rate (xrandr)
     xrandr --output DisplayPort-2 --mode 1920x1080 --rate 165 &
+    xrandr --output LVDS-1 --mode 1366x768 --rate 60 &
 
 # Disable Monitor Power Management (xrandr)
     xset s off -dpms &
