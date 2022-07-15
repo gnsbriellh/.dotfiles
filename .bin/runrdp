@@ -22,10 +22,10 @@ if [ "$REMOTEDESKTOP" = "" ]; then
             [Yy]* )
 
                 cp /dev/null $HOME/.dotfiles/.config/freerdp/Known-Hosts
-                echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.config/freerdp/Known-Hosts ;
+                echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.config/freerdp/Known-Hosts ;
                 echo "Saved !" ; sleep 2 ; break;;
 
             [Nn]* )
@@ -60,10 +60,10 @@ elif [ ! "$REMOTEDESKTOP" = "" ]; then
                         [Yy]* )
 
                             cp /dev/null $HOME/.dotfiles/.config/freerdp/Known-Hosts
-                            echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                            echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                            echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
-                            echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.dotfiles/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTEDESKTOP="'$REMOTEDESKTOP'"'     >> $HOME/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_USER="'$REMOTE_USER'"'         >> $HOME/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_PASSWORD="'$REMOTE_PASSWORD'"' >> $HOME/.config/freerdp/Known-Hosts ;
+                            echo 'REMOTE_IP="'$REMOTE_IP'"'             >> $HOME/.config/freerdp/Known-Hosts ;
                             echo "Saved !" ; sleep 2 ; break;;
 
                         [Nn]* )
