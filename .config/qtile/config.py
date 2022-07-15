@@ -661,7 +661,7 @@ screens = [
                     foreground = colors["wdb"]
                 )
             ],
-            size = 28,
+            size = 32,
             margin = [5, 5, 0, 5],
             background = colors["wdb"],
         ),
