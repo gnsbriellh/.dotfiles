@@ -64,6 +64,12 @@
             rm -r ~/.config/rofi
         fi
         ln -sfnv $PWD/.config/rofi ~/.config/rofi
+    
+    # volumeicon
+        if [ -d "$HOME/.config/volumeicon" ]; then
+            rm -r ~/.config/volumeicon
+        fi
+        ln -sfnv $PWD/.config/volumeicon ~/.config/volumeicon
 
     # VSCode
         ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/Code/User/settings.json
