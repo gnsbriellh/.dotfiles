@@ -49,7 +49,10 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 10
+    progress_bar_height = 6
+
+    # Progress Bar Color
+    highlight = "#e06c75"
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 1
@@ -90,7 +93,7 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#cccccc"
+    frame_color = "#e06c75"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -318,7 +321,7 @@
 [urgency_normal]
     background = "#2c313c"
     foreground = "#cccccc"
-    frame_color = "#E84A5F"
+    frame_color = "#2c313c"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
@@ -326,7 +329,7 @@
 [urgency_critical]
     background = "#2c313c"
     foreground = "#cccccc"
-    frame_color = "#E84A5F"
+    frame_color = "#2c313c"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
