@@ -1,3 +1,2 @@
 !.gitignore
-.ssh/
 .config/qtile/__pycache__/

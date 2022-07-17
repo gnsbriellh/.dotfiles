@@ -13,10 +13,9 @@
 
 import os
 import subprocess
-from colors import colors, icons
 from libqtile.lazy import lazy
+from colors import colors, icons
 from libqtile import bar, layout, widget, hook
-from libqtile.widget import base
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 
 auto_fullscreen = False                 # Prevents a Window to automaticaly set itself to fullscreen when not asked
@@ -226,11 +225,11 @@ floating_layout = layout.Floating(
         Match(title = "branchdialog"),            # gitk;
         Match(title = "pinentry")                 # GPG key password entry;
     ],
-    border_focus = colors["ffwb"],       # Focused Floating Window - Boder Color;
-    border_normal = colors["ufwb"],      # Unfocused Floating Window - Border Color;
-    border_width = 2,                    # Border Width;
-    fullscreen_border_width = 0,         # Border Width When in Fullscreen;
-    max_border_width = 2                 # Maximum Border Width;
+    border_focus = colors["00"],        # Focused Floating Window - Boder Color;
+    border_normal = colors["00"],       # Unfocused Floating Window - Border Color;
+    border_width = 0,                   # Border Width;
+    fullscreen_border_width = 0,        # Border Width When in Fullscreen;
+    max_border_width = 0                # Maximum Border Width;
 )
 
 #    _______   _   _   _                     _                                        _   
@@ -243,8 +242,8 @@ floating_layout = layout.Floating(
 #                                  |___/                      |___/                       
 
 layout_defaults = {
-        "border_focus" : colors["ftwb"],    # Focused Window - Border Color;
-        "border_normal" : colors["utwb"],   # Unfocused Window - Border Color;
+        "border_focus" : colors["02"],      # Focused Window - Border Color;
+        "border_normal" : colors["00"],     # Unfocused Window - Border Color;
         "border_width" : 2,                 # Border Width;
         "margin" : 5                        # Margin (Gap);
 }
@@ -261,7 +260,7 @@ layouts = [
         new_client_position = "bottom",
         single_border_width = 0,
         single_margin = 5
-    )
+    ),
 
 #    layout.Max(
 #        **layout_defaults
@@ -400,9 +399,9 @@ for i in groups:
 #                          |___/              
 
 widget_defaults = dict(
-    background = colors["wdb"],
-    foreground = colors["wdf"],
-    font = "Hack NF",
+    background = colors["00"],
+    foreground = colors["08"],
+    font = "Hack NF Bold",
     fontsize = 12,
     padding = 0
 )
@@ -410,7 +409,7 @@ extension_defaults = widget_defaults.copy()
 
 qtile_bar_icons = {
     "font" : "Material Design Icons Desktop",
-    "background" : colors["wdb"],
+    "background" : colors["00"],
     "fontsize" : 18,
     "padding" : 0
 }
@@ -437,25 +436,26 @@ screens = [
         top=bar.Bar(
             [
                 widget.Sep(
-                    padding= 15,
-                    foreground = colors["wdb"]
+                    padding= 2,
+                    foreground = colors["00"]
                 ),
 
-                widget.TextBox(
-                    **qtile_bar_icons,
-                    foreground = colors["arch"],
-                    text = icons["arch"],
-                    mouse_callbacks = {"Button1": lazy.spawn("rofi -modi drun,run -show drun")}
-                ),
+#                widget.TextBox(
+#                    **qtile_bar_icons,
+#                    foreground = colors["05"],
+#                    text = icons["arch"],
+#                    mouse_callbacks = {"Button1": lazy.spawn("rofi -modi drun,run -show drun")}
+#                ),
 
                 widget.GroupBox(
-                    active = colors["wdf"],
-                    inactive = colors["wdf"],
-                    block_highlight_text_color = colors["wdf"],
-                    urgent_border = colors["wdu"],
-                    urgent_text = colors["wdu"],
-                    highlight_color = colors["wdu"],
-                    this_current_screen_border = colors["wds"],
+                    font = "Hack NF Regular",
+                    active = colors["08"],
+                    inactive = colors["08"],
+                    block_highlight_text_color = colors["08"],
+                    urgent_border = colors["10"],
+                    urgent_text = colors["10"],
+                    highlight_color = colors["10"],
+                    this_current_screen_border = colors["06"],
                     highlight_method = "block",
                     urgent_alert_method = "line",
                     borderwidth = 3,
@@ -468,7 +468,7 @@ screens = [
                 ),
 
                 widget.WindowName(
-                    foreground = colors["wina"],
+                    foreground = colors["00"],
                     for_current_screen = True,
                     format = " {name}",
                     max_chars = 85
@@ -476,13 +476,13 @@ screens = [
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["volu"],
+                    foreground = colors["12"],
                     text= icons["volu"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e pulsemixer")}
                 ),
 
                 widget.PulseVolume(
-                    foreground = colors["volu"],
+                    foreground = colors["12"],
                     limit_max_volume = True,
                     step = 2,
                     volume_app = "pulsemixer",
@@ -491,19 +491,19 @@ screens = [
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["upda"],
+                    foreground = colors["02"],
                     text = icons["upda"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e sudo pacman -Syyu")}
                 ),
 
                 widget.CheckUpdates(
-                    colour_have_updates = colors["upda"],
-                    colour_no_updates = colors["upda"],
+                    colour_have_updates = colors["02"],
+                    colour_no_updates = colors["02"],
                     no_update_string = "0",
                     distro = 'Arch',
                     display_format = '{updates}',
@@ -512,12 +512,12 @@ screens = [
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["cpu"],
+                    foreground = colors["08"],
                     text = icons["cpu"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e btop")}
                 ),
@@ -525,59 +525,59 @@ screens = [
                 widget.CPU(
                     format = '{freq_current}GHz {load_percent}%',
                     update_interval = 0.5,
-                    foreground = colors["cpu"],
+                    foreground = colors["08"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e btop")}
                 ),
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["gpu"],
+                    foreground = colors["05"],
                     text = icons["gpu"]
                 ),
 
                 widget.ThermalSensor(
-                    foreground = colors["gpu"],
+                    foreground = colors["05"],
                     tag_sensor = "Package id 0"
                 ),
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["mem"],
+                    foreground = colors["14"],
                     text = icons["mem"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e htop")}
                 ),
 
                 widget.Memory(
                     format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    foreground = colors["mem"],
+                    foreground = colors["14"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e htop")}
                 ),
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["pom"],
+                    foreground = colors["11"],
                     text = icons["pom"]
                 ),
 
                 widget.Pomodoro(
-                    color_active = colors["pom"],
-                    color_inactive = colors["pom"],
-                    color_break = colors["pom"],
+                    color_active = colors["11"],
+                    color_inactive = colors["11"],
+                    color_break = colors["11"],
                     prefix_active = "",
                     prefix_break = "Take a Break ! ",
                     prefix_long_break = "Take a Break ! ",
@@ -589,81 +589,81 @@ screens = [
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["clo"],
+                    foreground = colors["04"],
                     text = icons["clo"]
                 ),
 
                 widget.Clock(
                     format = "%a %d - %I:%M %p",
-                    foreground = colors["clo"]
+                    foreground = colors["04"]
                     #mouse_callbacks= open_calendar
                 ),
 
                 widget.Sep(
                     padding=5,
-                    foreground = colors["wdb"],
-                    background = colors["wdb"]
+                    foreground = colors["00"],
+                    background = colors["00"]
                 ),
 
                 widget.Sep(
                     **qtile_bar_sep,
-                    foreground = colors["sepa"]
+                    foreground = colors["08"]
                 ),
 
                 widget.Systray(
-                    background = colors["wdb"],
+                    background = colors["00"],
                     padding = 5
                 ),
 
                 widget.Sep(
                     padding= 10,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["aler"],
+                    foreground = colors["09"],
                     text = icons["aler"],
                     mouse_callbacks = {"Button1": lazy.spawn("dunstctl history-pop")}
                 ),
 
                 widget.Sep(
                     padding= 10,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 ),
 
 #                widget.TextBox(
 #                    **qtile_bar_icons,
-#                    foreground = colors["wifi"],
+#                    foreground = colors["09"],
 #                    text = icons["wifi"],
 #                    mouse_callbacks = {"Button1": lazy.spawn("rofi-wifi-menu")}
 #                ),
 #
 #                widget.Sep(
 #                    padding= 10,
-#                    foreground = colors["wdb"]
+#                    foreground = colors["00"]
 #                ),
 
                 widget.QuickExit(
                     **qtile_bar_icons,
-                    foreground = colors["shut"],
+                    foreground = colors["09"],
                     default_text = icons["shut"],
                     mouse_callbacks = {"Button1": lazy.spawn("exitmenu")}
                 ),
 
                 widget.Sep(
                     padding= 10,
-                    foreground = colors["wdb"]
+                    foreground = colors["00"]
                 )
             ],
             size = 32,
             margin = [5, 5, 0, 5],
-            background = colors["wdb"],
+            background = colors["00"],
         ),
     ),
 ]

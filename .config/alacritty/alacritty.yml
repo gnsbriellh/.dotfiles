@@ -13,33 +13,33 @@ env:
 
 ## Colors Configuration ##
 colors:
-
   # Default colors
   primary:
-    background: '#2c313c'
-    foreground: '#f8f8f2'
+    background: '0x2f343f'
+    foreground: '0xcccccc'
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#ff5555'
-    green:   '#50fa7b'
-    yellow:  '#f1fa8c'
-    blue:    '#caa9fa'
-    magenta: '#ff79c6'
-    cyan:    '#8be9fd'
-    white:   '#bfbfbf'
+    black:   '0x222222'
+    red:     '0xe84f4f'
+    green:   '0xb7ce42'
+    yellow:  '0xfea63c'
+    blue:    '0x66a9b9'
+    magenta: '0xb7416e'
+    cyan:    '0x6d878d'
+    white:   '0xcccccc'
 
   # Bright colors
   bright:
-    black:   '#575b70'
-    red:     '#ff6e67'
-    green:   '#5af78e'
-    yellow:  '#f4f99d'
-    blue:    '#caa9fa'
-    magenta: '#ff92d0'
-    cyan:    '#9aedfe'
-    white:   '#e6e6e6'
+    black:   '0x666666'
+    red:     '0xd23d3d'
+    green:   '0xbde077'
+    yellow:  '0xffe863'
+    blue:    '0xaaccbb'
+    magenta: '0xe16a98'
+    cyan:    '0x42717b'
+    white:   '0xffffff'
+
 
 ## Font Configuration ##
 font:
@@ -66,7 +66,7 @@ draw_bold_text_with_bright_colors: false
 
 ## Window Configuration ##
 window:
-  opacity: 0.90
+  #opacity: 0.60
   gtk_theme_variant: dark
 
 ## Selection Configuration ##

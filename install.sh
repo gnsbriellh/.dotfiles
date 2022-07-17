@@ -3,11 +3,10 @@
 ## Home ##
 
     # .bin
-        if [ -d "$HOME/.bin" ]; then
-            rm -r ~/.bin
+        if [ -d "$HOME/.local/.bin" ]; then
+            rm -r ~/.local/.bin
         fi
-        mkdir ~/.bin
-        ln -sfnv $PWD/.bin/* ~/.bin/
+        ln -sfnv $PWD/.bin ~/.local/.bin
 
     # Bash
         if [ -d "$HOME/.bashrc" ]; then
@@ -74,6 +73,10 @@
     # VSCode
         ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/Code/User/settings.json
         ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
+
+    # Thunar
+        ln -sfnv $PWD/.config/Thunar/uca.xml ~/.config/Thunar/uca.xml
+        ln -sfnv $PWD/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
 ## ROOT ##
 

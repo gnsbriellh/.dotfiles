@@ -36,7 +36,7 @@ if [ "$REMOTEDESKTOP" = "" ]; then
         esac
     done
 
-    xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1905 /h:1030
+    xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1033
 
 elif [ ! "$REMOTEDESKTOP" = "" ]; then
 
@@ -45,7 +45,7 @@ elif [ ! "$REMOTEDESKTOP" = "" ]; then
         case $yn in
             [Yy]* )
 
-                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1905 /h:1030 ; break;;
+                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1033 ; break;;
 
             [Nn]* )
 
@@ -74,7 +74,7 @@ elif [ ! "$REMOTEDESKTOP" = "" ]; then
                     esac
                 done
 
-                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1905 /h:1030 ; break;;
+                xfreerdp /u:$REMOTE_USER /p:$REMOTE_PASSWORD /v:$REMOTE_IP /sound:sys:pulse /microphone:sys:pulse /w:1910 /h:1033 ; break;;
 
             * ) echo "Please answer with Y[es] or N[o].";;
         esac
