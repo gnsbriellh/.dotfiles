@@ -25,6 +25,9 @@
 # Volume Icon Applet
     volumeicon &
 
+# Battery Icon Applet
+#    cbatticon &
+
 # Vscode thing...
     # init keyring
     eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh) &
@@ -33,4 +36,4 @@
 
     ...
 
-    exec dbus-launch
+    exec dbus-launch &
