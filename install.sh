@@ -1,5 +1,10 @@
 #!/bin/bash
 
+    # .config
+        if [  ! -d "$HOME/.config" ]; then
+            mkdir -v ~/.config
+        fi
+
 ## Home ##
 
     # .bin
