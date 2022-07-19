@@ -1,18 +1,18 @@
 {
     /* Extentions Settings*/
-    
+
     // Prettier - Code formatter (Auto Apply on Save).
     "editor.formatOnSave": false,
     "[javascript]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    
+
     // Auto Rename Tag (Rename Tags).
     "auto-rename-tag.activationOnLanguage": [
         "html", "xml", "json"
     ],
-    
+
     // GitLens.
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.currentLine.enabled": false,
@@ -21,19 +21,19 @@
     "git.confirmSync": false,
     // Auto fetch from git repositories
     "git.autofetch": true,
-    
+
     // Material Icon Theme (Icons).
     "workbench.iconTheme": "material-icon-theme",
-    
+
     // One Dark Pro (Theme).
     "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
     "workbench.preferredLightColorTheme": "One Dark Pro Darker",
     "workbench.preferredHighContrastColorTheme": "One Dark Pro Darker",
     "workbench.preferredHighContrastLightColorTheme": "One Dark Pro Darker",
-    
+
     /* VSCode Font */
-    
+
     // Controls the font in the editor.
     "editor.fontFamily": "FiraCode NF",
     "editor.fontSize": 16,
@@ -58,9 +58,9 @@
     // controls the font for the output text for notebook cells.
     "notebook.outputFontFamily": "FiraCode NF",
     "notebook.outputFontSize": 16,
-    
+
     /* VSCode Settings */
-    
+
     // Controls the minimap
     "editor.minimap.enabled": false,
     "editor.minimap.scale": 2,
