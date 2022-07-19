@@ -1,11 +1,11 @@
 #!/bin/bash
 
+## Home ##
+
     # .config
         if [  ! -d "$HOME/.config" ]; then
             mkdir -v ~/.config
         fi
-
-## Home ##
 
     # .bin
         if [ -d "$HOME/.local/.bin" ]; then
@@ -76,10 +76,13 @@
         ln -sfnv $PWD/.config/volumeicon ~/.config/volumeicon
 
     # VSCode
-        ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/Code/User/settings.json
-        ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
+        ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/"Code - OSS"/User/settings.json
+        ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/"Code - OSS"/User/keybindings.json
 
     # Thunar
+        if [  ! -d "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml" ]; then
+            mkdir -v ~/$HOME/.config/xfce4/xfconf/xfce-perchannel-xml
+        fi
         ln -sfnv $PWD/.config/Thunar/uca.xml ~/.config/Thunar/uca.xml
         ln -sfnv $PWD/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
