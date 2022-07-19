@@ -1,15 +1,14 @@
-#     ______  ________  ______  __        ________  
-#    /      \|        \|      \|  \      |        \ 
-#   |  $$$$$$\\$$$$$$$$ \$$$$$$| $$      | $$$$$$$$ 
-#   | $$  | $$  | $$     | $$  | $$      | $$__     
-#   | $$  | $$  | $$     | $$  | $$      | $$  \    
-#   | $$ _| $$  | $$     | $$  | $$      | $$$$$    
-#   | $$/ \ $$  | $$    _| $$_ | $$_____ | $$_____  
-#    \$$ $$ $$  | $$   |   $$ \| $$     \| $$     \ 
-#     \$$$$$$\   \$$    \$$$$$$ \$$$$$$$$ \$$$$$$$$ 
-#         \$$$                                      
-#                                                   
-#                                                   
+
+#    __        __  __                                     __                     
+#   |  \      |  \|  \                                   |  \                    
+#   | $$       \$$| $$____    ______   ______    ______   \$$  ______    _______ 
+#   | $$      |  \| $$    \  /      \ |      \  /      \ |  \ /      \  /       \
+#   | $$      | $$| $$$$$$$\|  $$$$$$\ \$$$$$$\|  $$$$$$\| $$|  $$$$$$\|  $$$$$$$
+#   | $$      | $$| $$  | $$| $$   \$$/      $$| $$   \$$| $$| $$    $$ \$$    \ 
+#   | $$_____ | $$| $$__/ $$| $$     |  $$$$$$$| $$      | $$| $$$$$$$$ _\$$$$$$\
+#   | $$     \| $$| $$    $$| $$      \$$    $$| $$      | $$ \$$     \|       $$
+#    \$$$$$$$$ \$$ \$$$$$$$  \$$       \$$$$$$$ \$$       \$$  \$$$$$$$ \$$$$$$$ 
+#                                                                                
 
 import os
 import subprocess
@@ -18,29 +17,50 @@ from colors import colors, icons
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 
-auto_fullscreen = False                 # Prevents a Window to automaticaly set itself to fullscreen when not asked
-bring_front_click = False                # Bring a Window to Front When Clicked
-cursor_warp = False                     # Cursor Follows window selection, and warps to center
-follow_mouse_focus = False              # Mouse Hover to Change Window Focus
-focus_on_window_activation = "smart"    # _NET_ACTIVATE_WINDOW Behavior
-reconfigure_screens = True              # Automatic Screen Reconfiguration
-auto_minimize = True                    # Allow apps to auto-minimize themselves when losing focus
-wl_input_rules = None                   # Wayland Input Devices
-myTerminal = "alacritty"                # Default Terminal;
+#     ______                        ______   __                                          __      __                               
+#    /      \                      /      \ |  \                                        |  \    |  \                              
+#   |  $$$$$$\  ______   _______  |  $$$$$$\ \$$  ______   __    __   ______   ______  _| $$_    \$$  ______   _______    _______ 
+#   | $$   \$$ /      \ |       \ | $$_  \$$|  \ /      \ |  \  |  \ /      \ |      \|   $$ \  |  \ /      \ |       \  /       \
+#   | $$      |  $$$$$$\| $$$$$$$\| $$ \    | $$|  $$$$$$\| $$  | $$|  $$$$$$\ \$$$$$$\\$$$$$$  | $$|  $$$$$$\| $$$$$$$\|  $$$$$$$
+#   | $$   __ | $$  | $$| $$  | $$| $$$$    | $$| $$  | $$| $$  | $$| $$   \$$/      $$ | $$ __ | $$| $$  | $$| $$  | $$ \$$    \ 
+#   | $$__/  \| $$__/ $$| $$  | $$| $$      | $$| $$__| $$| $$__/ $$| $$     |  $$$$$$$ | $$|  \| $$| $$__/ $$| $$  | $$ _\$$$$$$\
+#    \$$    $$ \$$    $$| $$  | $$| $$      | $$ \$$    $$ \$$    $$| $$      \$$    $$  \$$  $$| $$ \$$    $$| $$  | $$|       $$
+#     \$$$$$$   \$$$$$$  \$$   \$$ \$$       \$$ _\$$$$$$$  \$$$$$$  \$$       \$$$$$$$   \$$$$  \$$  \$$$$$$  \$$   \$$ \$$$$$$$ 
+#                                               |  \__| $$                                                                        
+#                                                \$$    $$                                                                        
+#                                                 \$$$$$$                                                                         
+#                                                                                                                                 
 
+auto_fullscreen            = False           # Prevents a window to automaticaly set itself to fullscreen when not asked
+bring_front_click          = "floating_only" # Bring a window to front when clicked
+cursor_warp                = False           # Cursor follows window selection, and warps to center
+follow_mouse_focus         = False           # Mouse hover to change window focus
+focus_on_window_activation = "smart"         # _NET_ACTIVATE_WINDOW Behavior
+reconfigure_screens        = True            # Automatic screen reconfiguration
+auto_minimize              = True            # Allow apps to auto-minimize themselves when losing focus
+myTerminal                 = "alacritty"     # Default terminal
+wmname                     = "LG3D"          # Java.. thing..
 
-#    _  __            ____  _           _ _                 
-#   | |/ /           |  _ \(_)         | (_)                
-#   | ' / ___ _   _  | |_) |_ _ __   __| |_ _ __   __ _ ___ 
-#   |  < / _ \ | | | |  _ <| | '_ \ / _` | | '_ \ / _` / __|
-#   | . \  __/ |_| | | |_) | | | | | (_| | | | | | (_| \__ \
-#   |_|\_\___|\__, | |____/|_|_| |_|\__,_|_|_| |_|\__, |___/
-#              __/ |                               __/ |    
-#             |___/                               |___/     
+#    __    __                           _______   __                  __  __                               
+#   |  \  /  \                         |       \ |  \                |  \|  \                              
+#   | $$ /  $$ ______   __    __       | $$$$$$$\ \$$ _______    ____| $$ \$$ _______    ______    _______ 
+#   | $$/  $$ /      \ |  \  |  \      | $$__/ $$|  \|       \  /      $$|  \|       \  /      \  /       \
+#   | $$  $$ |  $$$$$$\| $$  | $$      | $$    $$| $$| $$$$$$$\|  $$$$$$$| $$| $$$$$$$\|  $$$$$$\|  $$$$$$$
+#   | $$$$$\ | $$    $$| $$  | $$      | $$$$$$$\| $$| $$  | $$| $$  | $$| $$| $$  | $$| $$  | $$ \$$    \ 
+#   | $$ \$$\| $$$$$$$$| $$__/ $$      | $$__/ $$| $$| $$  | $$| $$__| $$| $$| $$  | $$| $$__| $$ _\$$$$$$\
+#   | $$  \$$\\$$     \ \$$    $$      | $$    $$| $$| $$  | $$ \$$    $$| $$| $$  | $$ \$$    $$|       $$
+#    \$$   \$$ \$$$$$$$ _\$$$$$$$       \$$$$$$$  \$$ \$$   \$$  \$$$$$$$ \$$ \$$   \$$ _\$$$$$$$ \$$$$$$$ 
+#                      |  \__| $$                                                      |  \__| $$          
+#                       \$$    $$                                                       \$$    $$          
+#                        \$$$$$$                                                         \$$$$$$           
 
-mod = "mod4"                
+mod = "mod4"
 
 keys = [
+
+# Window #
+
+    # Change focus
     Key([mod], "i", lazy.layout.up(),
          desc = "Move focus up"
     ),
@@ -57,6 +77,7 @@ keys = [
         desc = "Move focus to right"
     ),
 
+    # Move window
     Key([mod, "shift"], "i", lazy.layout.shuffle_up(),
         desc = "Move window up"
     ),
@@ -73,6 +94,7 @@ keys = [
         desc = "Move window to the right"
     ),
 
+    # Resize window
     Key([mod, "control"], "i", lazy.layout.grow(),
         desc = "Grow window up"
     ),
@@ -89,68 +111,64 @@ keys = [
         desc = "Grow window to the right"
     ),
 
-    Key([mod], "space", lazy.layout.flip(),
+    Key([mod, "control"], "space", lazy.layout.reset(),
         desc = "Reset all window sizes"
     ),
 
-    Key([mod, "control"], "f", lazy.window.toggle_fullscreen(),
-        desc = "Toggle Fullscreen"
+    # Kill focused window
+    Key([mod,], "c", lazy.window.kill(),
+        desc = "Kill Focused Window"
     ),
 
-    Key([mod], "r", lazy.layout.reset(),
-        desc = "Reset all window sizes"
-    ),
+# Layouts #
 
-    Key([mod], "f", lazy.layout.maximize(),
-        desc = "Maximize/Minimize for MonadTall Layout"
-    ),
-
+    # Floating
     Key([mod], "v", lazy.window.toggle_floating(),
         desc = "Toggle Floating Layout"
     ),
 
-    Key([mod], "d", lazy.screen.next_group(),
-        desc = "Swith to the Next Workspace"
+    # Fullscreen
+    Key([mod, "control"], "f", lazy.window.toggle_fullscreen(),
+        desc = "Toggle Fullscreen"
     ),
 
-    Key([mod], "a", lazy.screen.prev_group(),
-        desc = "Swith to the Previous Workspace"
+    #MonadTall
+    Key([mod], "space", lazy.layout.flip(),
+        desc = "Flip windows from left to right and vice versa"
     ),
 
-    Key([mod], "c", lazy.window.kill(),
-        desc = "Kill Focused Window"
+    Key([mod], "f", lazy.layout.maximize(),
+        desc = "Maximize/Minimize Window"
     ),
 
+# Window Manager #
+
+    # Config file
     Key([mod], "F9", lazy.reload_config(),
         desc = "Reload Qtile Config"
     ),
 
-    Key([mod], "F12", lazy.restart(),
+    # System
+    Key([mod], "F10", lazy.restart(),
         desc = "Restart Qtile"
     ),
 
-    Key([mod, "control"], "F12", lazy.shutdown(),
+    Key([mod, "control"], "F11", lazy.shutdown(),
         desc = "Shutdown Qtile"
     ),
 
-#                                _ _           _   _                 
-#              /\               | (_)         | | (_)                
-#             /  \   _ __  _ __ | |_  ___ __ _| |_ _  ___  _ __  ___ 
-#            / /\ \ | '_ \| '_ \| | |/ __/ _` | __| |/ _ \| '_ \/ __|
-#           / ____ \| |_) | |_) | | | (_| (_| | |_| | (_) | | | \__ \
-#          /_/    \_\ .__/| .__/|_|_|\___\__,_|\__|_|\___/|_| |_|___/
-#                   | |   | |                                        
-#                   |_|   |_|                                        
-
-    Key([mod], "Return", lazy.spawn(myTerminal),
-        desc = "Launch terminal"
-    ),
-
-    Key([mod, "control"], "c", lazy.spawn("slock"),
+    # Lockscreen
+    Key([mod, "control"], "F12", lazy.spawn("slock"),
         desc = "Lock Screen with slock"
     ),
 
-    Key([mod, "control"], "Return", lazy.spawn("rofi -modi drun,run -show drun"),
+    # Terminal
+    Key([mod], "t", lazy.spawn(myTerminal),
+        desc = "Launch terminal"
+    ),
+
+    # Rofi
+    Key([mod], "r", lazy.spawn("rofi -modi drun,run -show drun"),
         desc = "Launch Rofi"
     ),
 
@@ -158,45 +176,82 @@ keys = [
         desc = "Launch Rofi Emoji"
     ),
 
-    Key([mod], "F1", lazy.spawn("firefox"),
-        desc = "Launch Firefox"
-    ),
-
-    Key([mod], "F2", lazy.spawn("code"),
-        desc = "Launch VSCode"
-    ),
-
-    Key([mod], "F3", lazy.spawn("thunar"),
-        desc = "Launch File Manager"
-    ),
-
-    Key([mod], "F4", lazy.spawn("spotify"),
-        desc = "Launch Spotify"
-    ),
-
-    Key([mod], "F5", lazy.spawn("steam"),
-        desc = "Launch Steam"
-    ),
-
-    Key([mod], "F6", lazy.spawn(myTerminal +" -e runrdp"),
-        desc = "Launch xfreerdp"
-    ),
-
-    Key([mod], "F11", lazy.spawn("xkill"),
+    # Xkill
+    Key([mod, "control"], "c", lazy.spawn("xkill"),
         desc = "Launch xkill"
     ),
 
+    # Change Wallpaper
     Key([mod], "b", lazy.spawn("changebg"),
         desc = "Change Background"
+    ),
+
+# Workspaces #
+
+    # Change workspace
+    Key([mod], "Tab", lazy.screen.next_group(),
+        desc = "Swith to the Next Workspace"
+    ),
+
+    Key([mod, "shift"], "Tab", lazy.screen.prev_group(),
+        desc = "Swith to the Previous Workspace"
+    ),
+
+# Applets #
+
+    # Audio
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer -c 0 set PCM 0.5dB+")
+    ),
+
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("amixer -c 0 set PCM 0.5dB-")
+    ),
+
+#     ______                       __  __                      __      __                               
+#    /      \                     |  \|  \                    |  \    |  \                              
+#   |  $$$$$$\  ______    ______  | $$ \$$  _______  ______  _| $$_    \$$  ______   _______    _______ 
+#   | $$__| $$ /      \  /      \ | $$|  \ /       \|      \|   $$ \  |  \ /      \ |       \  /       \
+#   | $$    $$|  $$$$$$\|  $$$$$$\| $$| $$|  $$$$$$$ \$$$$$$\\$$$$$$  | $$|  $$$$$$\| $$$$$$$\|  $$$$$$$
+#   | $$$$$$$$| $$  | $$| $$  | $$| $$| $$| $$      /      $$ | $$ __ | $$| $$  | $$| $$  | $$ \$$    \ 
+#   | $$  | $$| $$__/ $$| $$__/ $$| $$| $$| $$_____|  $$$$$$$ | $$|  \| $$| $$__/ $$| $$  | $$ _\$$$$$$\
+#   | $$  | $$| $$    $$| $$    $$| $$| $$ \$$     \\$$    $$  \$$  $$| $$ \$$    $$| $$  | $$|       $$
+#    \$$   \$$| $$$$$$$ | $$$$$$$  \$$ \$$  \$$$$$$$ \$$$$$$$   \$$$$  \$$  \$$$$$$  \$$   \$$ \$$$$$$$ 
+#             | $$      | $$                                                                            
+#             | $$      | $$                                                                            
+#              \$$       \$$                                                                            
+
+    Key([mod], "q", lazy.spawn("firefox"),
+        desc = "Launch Firefox"
+    ),
+
+    Key([mod], "w", lazy.spawn("code"),
+        desc = "Launch VSCode"
+    ),
+
+    Key([mod], "e", lazy.spawn("thunar"),
+        desc = "Launch File Manager"
+    ),
+
+    Key([mod], "a", lazy.spawn("spotify"),
+        desc = "Launch Spotify"
+    ),
+
+    Key([mod], "s", lazy.spawn("steam"),
+        desc = "Launch Steam"
+    ),
+
+    Key([mod], "d", lazy.spawn(myTerminal +" -e runrdp"),
+        desc = "Launch xfreerdp"
     ),
 ]
 
 mouse = [
-    Drag([mod], "Button3", lazy.window.set_position_floating(), start = lazy.window.get_position(),
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start = lazy.window.get_position(),
         desc = "Set Window to Floating Mode and Move"
     ),
 
-    Drag([mod], "Button1", 
+    Drag([mod], "Button3", 
         lazy.window.set_size_floating(), start = lazy.window.get_size(),
         desc = "Resize Floating Window"
     ),
@@ -206,40 +261,39 @@ mouse = [
     ),
 ]
 
-#    ______   _                   _     _                     _                                        _   
-#   |  ____| | |                 | |   (_)                   | |                                      | |  
-#   | |__    | |   ___     __ _  | |_   _   _ __     __ _    | |        __ _   _   _    ___    _   _  | |_ 
-#   |  __|   | |  / _ \   / _` | | __| | | | '_ \   / _` |   | |       / _` | | | | |  / _ \  | | | | | __|
-#   | |      | | | (_) | | (_| | | |_  | | | | | | | (_| |   | |____  | (_| | | |_| | | (_) | | |_| | | |_ 
-#   |_|      |_|  \___/   \__,_|  \__| |_| |_| |_|  \__, |   |______|  \__,_|  \__, |  \___/   \__,_|  \__|
-#                                                    __/ |                      __/ |                      
-#                                                   |___/                      |___/                       
+#    __                                                 __               
+#   |  \                                               |  \              
+#   | $$       ______   __    __   ______   __    __  _| $$_     _______ 
+#   | $$      |      \ |  \  |  \ /      \ |  \  |  \|   $$ \   /       \
+#   | $$       \$$$$$$\| $$  | $$|  $$$$$$\| $$  | $$ \$$$$$$  |  $$$$$$$
+#   | $$      /      $$| $$  | $$| $$  | $$| $$  | $$  | $$ __  \$$    \ 
+#   | $$_____|  $$$$$$$| $$__/ $$| $$__/ $$| $$__/ $$  | $$|  \ _\$$$$$$\
+#   | $$     \\$$    $$ \$$    $$ \$$    $$ \$$    $$   \$$  $$|       $$
+#    \$$$$$$$$ \$$$$$$$ _\$$$$$$$  \$$$$$$   \$$$$$$     \$$$$  \$$$$$$$ 
+#                      |  \__| $$                                        
+#                       \$$    $$                                        
+#                        \$$$$$$                                         
+
+# Floating #
 
 floating_layout = layout.Floating(
     float_rules = [
-        *layout.Floating.default_float_rules,     # Default Rules;
-        Match(wm_class = "confirmreset"),         # gitk;
-        Match(wm_class = "makebranch"),           # gitk;
-        Match(wm_class = "maketag"),              # gitk;
-        Match(wm_class = "ssh-askpass"),          # ssh-askpass;
-        Match(title = "branchdialog"),            # gitk;
-        Match(title = "pinentry")                 # GPG key password entry;
+        *layout.Floating.default_float_rules,     # Default Rules
+        Match(wm_class  = "confirmreset"),        # gitk
+        Match(wm_class  = "makebranch"),          # gitk
+        Match(wm_class  = "maketag"),             # gitk
+        Match(wm_class  = "ssh-askpass"),         # ssh-askpass
+        Match(title     = "branchdialog"),        # gitk
+        Match(title     = "pinentry")             # GPG key password entry
     ],
-    border_focus = colors["00"],        # Focused Floating Window - Boder Color;
-    border_normal = colors["00"],       # Unfocused Floating Window - Border Color;
-    border_width = 0,                   # Border Width;
-    fullscreen_border_width = 0,        # Border Width When in Fullscreen;
-    max_border_width = 0                # Maximum Border Width;
+    border_focus = colors["00"],        # Focused Floating Window - Boder Color
+    border_normal = colors["00"],       # Unfocused Floating Window - Border Color
+    border_width = 0,                   # Border Width
+    fullscreen_border_width = 0,        # Border Width When in Fullscreen
+    max_border_width = 0                # Maximum Border Width
 )
 
-#    _______   _   _   _                     _                                        _   
-#   |__   __| (_) | | (_)                   | |                                      | |  
-#      | |     _  | |  _   _ __     __ _    | |        __ _   _   _    ___    _   _  | |_ 
-#      | |    | | | | | | | '_ \   / _` |   | |       / _` | | | | |  / _ \  | | | | | __|
-#      | |    | | | | | | | | | | | (_| |   | |____  | (_| | | |_| | | (_) | | |_| | | |_ 
-#      |_|    |_| |_| |_| |_| |_|  \__, |   |______|  \__,_|  \__, |  \___/   \__,_|  \__|
-#                                   __/ |                      __/ |                      
-#                                  |___/                      |___/                       
+# Tiling #
 
 layout_defaults = {
         "border_focus" : colors["02"],      # Focused Window - Border Color;
@@ -307,14 +361,18 @@ layouts = [
 #    ),
 ]
 
-#   __          __        _                                  
-#   \ \        / /       | |                                 
-#    \ \  /\  / /__  _ __| | _____ _ __   __ _  ___ ___  ___ 
-#     \ \/  \/ / _ \| '__| |/ / __| '_ \ / _` |/ __/ _ \/ __|
-#      \  /\  / (_) | |  |   <\__ \ |_) | (_| | (_|  __/\__ \
-#       \/  \/ \___/|_|  |_|\_\___/ .__/ \__,_|\___\___||___/
-#                                 | |                        
-#                                 |_|                        
+#    __       __                      __                                                                   
+#   |  \  _  |  \                    |  \                                                                  
+#   | $$ / \ | $$  ______    ______  | $$   __   _______   ______    ______    _______   ______    _______ 
+#   | $$/  $\| $$ /      \  /      \ | $$  /  \ /       \ /      \  |      \  /       \ /      \  /       \
+#   | $$  $$$\ $$|  $$$$$$\|  $$$$$$\| $$_/  $$|  $$$$$$$|  $$$$$$\  \$$$$$$\|  $$$$$$$|  $$$$$$\|  $$$$$$$
+#   | $$ $$\$$\$$| $$  | $$| $$   \$$| $$   $$  \$$    \ | $$  | $$ /      $$| $$      | $$    $$ \$$    \ 
+#   | $$$$  \$$$$| $$__/ $$| $$      | $$$$$$\  _\$$$$$$\| $$__/ $$|  $$$$$$$| $$_____ | $$$$$$$$ _\$$$$$$\
+#   | $$$    \$$$ \$$    $$| $$      | $$  \$$\|       $$| $$    $$ \$$    $$ \$$     \ \$$     \|       $$
+#    \$$      \$$  \$$$$$$  \$$       \$$   \$$ \$$$$$$$ | $$$$$$$   \$$$$$$$  \$$$$$$$  \$$$$$$$ \$$$$$$$ 
+#                                                        | $$                                              
+#                                                        | $$                                              
+#                                                         \$$                                              
 
 groups = [
     Group(
@@ -372,31 +430,37 @@ groups = [
 #    ),
 ]
 
+# Key Bindings #
+
 for i in groups:
     keys.extend(
         [
-            Key([mod], i.name, lazy.group[i.name].toscreen(),
-                desc = "Switch to group {}".format(i.name)
-            ),
+        Key([mod], i.name, lazy.group[i.name].toscreen(),
+            desc = "Switch to group {}".format(i.name)
+        ),
 
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group = True),
-                desc = "Move focused window to group {}".format(i.name)
-            ),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group = True),
+            desc = "Move focused window to group {}".format(i.name)
+        ),
 
-            Key([mod, "control"], i.name, lazy.window.togroup(i.name),
-                desc = "move focused window to group {}".format(i.name)
-            ),
+        Key([mod, "control"], i.name, lazy.window.togroup(i.name),
+            desc = "move focused window to group {}".format(i.name)
+        ),
         ]
     )
 
-#    __          ___     _            _       
-#    \ \        / (_)   | |          | |      
-#     \ \  /\  / / _  __| | __ _  ___| |_ ___ 
-#      \ \/  \/ / | |/ _` |/ _` |/ _ \ __/ __|
-#       \  /\  /  | | (_| | (_| |  __/ |_\__ \
-#        \/  \/   |_|\__,_|\__, |\___|\__|___/
-#                           __/ |             
-#                          |___/              
+#    __       __  __        __                       __               
+#   |  \  _  |  \|  \      |  \                     |  \              
+#   | $$ / \ | $$ \$$  ____| $$  ______    ______  _| $$_     _______ 
+#   | $$/  $\| $$|  \ /      $$ /      \  /      \|   $$ \   /       \
+#   | $$  $$$\ $$| $$|  $$$$$$$|  $$$$$$\|  $$$$$$\\$$$$$$  |  $$$$$$$
+#   | $$ $$\$$\$$| $$| $$  | $$| $$  | $$| $$    $$ | $$ __  \$$    \ 
+#   | $$$$  \$$$$| $$| $$__| $$| $$__| $$| $$$$$$$$ | $$|  \ _\$$$$$$\
+#   | $$$    \$$$| $$ \$$    $$ \$$    $$ \$$     \  \$$  $$|       $$
+#    \$$      \$$ \$$  \$$$$$$$ _\$$$$$$$  \$$$$$$$   \$$$$  \$$$$$$$ 
+#                              |  \__| $$                             
+#                               \$$    $$                             
+#                                \$$$$$$                              
 
 widget_defaults = dict(
     background = colors["00"],
@@ -415,7 +479,8 @@ qtile_bar_icons = {
 }
 
 qtile_bar_sep = {
-    "padding" : 20
+    "padding" : 20,
+    "foreground" : colors["00"]
 }
 
 #    _______    ______   _______    ______  
@@ -428,8 +493,6 @@ qtile_bar_sep = {
 #   | $$    $$| $$  | $$| $$  | $$ \$$    $$
 #    \$$$$$$$  \$$   \$$ \$$   \$$  \$$$$$$ 
 #                                           
-#                                           
-#                                           
 
 screens = [
     Screen(
@@ -439,13 +502,6 @@ screens = [
                     padding= 2,
                     foreground = colors["00"]
                 ),
-
-#                widget.TextBox(
-#                    **qtile_bar_icons,
-#                    foreground = colors["05"],
-#                    text = icons["arch"],
-#                    mouse_callbacks = {"Button1": lazy.spawn("rofi -modi drun,run -show drun")}
-#                ),
 
                 widget.GroupBox(
                     font = "Hack NF Regular",
@@ -490,8 +546,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -511,8 +566,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -530,8 +584,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -546,8 +599,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -564,8 +616,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -588,8 +639,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
-                    foreground = colors["00"]
+                    **qtile_bar_sep
                 ),
 
                 widget.TextBox(
@@ -601,7 +651,6 @@ screens = [
                 widget.Clock(
                     format = "%a %d - %I:%M %p",
                     foreground = colors["04"]
-                    #mouse_callbacks= open_calendar
                 ),
 
                 widget.Sep(
@@ -611,7 +660,7 @@ screens = [
                 ),
 
                 widget.Sep(
-                    **qtile_bar_sep,
+                    padding = 20,
                     foreground = colors["08"]
                 ),
 
@@ -637,18 +686,6 @@ screens = [
                     foreground = colors["00"]
                 ),
 
-#                widget.TextBox(
-#                    **qtile_bar_icons,
-#                    foreground = colors["09"],
-#                    text = icons["wifi"],
-#                    mouse_callbacks = {"Button1": lazy.spawn("rofi-wifi-menu")}
-#                ),
-#
-#                widget.Sep(
-#                    padding= 10,
-#                    foreground = colors["00"]
-#                ),
-
                 widget.QuickExit(
                     **qtile_bar_icons,
                     foreground = colors["09"],
@@ -668,29 +705,21 @@ screens = [
     ),
 ]
 
-#                  _                    _____ _             _   
-#       /\        | |                  / ____| |           | |  
-#      /  \  _   _| |_ ___    ______  | (___ | |_ __ _ _ __| |_ 
-#     / /\ \| | | | __/ _ \  |______|  \___ \| __/ _` | '__| __|
-#    / ____ \ |_| | || (_) |           ____) | || (_| | |  | |_ 
-#   /_/    \_\__,_|\__\___/           |_____/ \__\__,_|_|   \__|
-#                                                               
+#     ______               __                 ______     __                           __     
+#    /      \             |  \               /      \   |  \                         |  \    
+#   |  $$$$$$\ __    __  _| $$_     ______  |  $$$$$$\ _| $$_     ______    ______  _| $$_   
+#   | $$__| $$|  \  |  \|   $$ \   /      \ | $$___\$$|   $$ \   |      \  /      \|   $$ \  
+#   | $$    $$| $$  | $$ \$$$$$$  |  $$$$$$\ \$$    \  \$$$$$$    \$$$$$$\|  $$$$$$\\$$$$$$  
+#   | $$$$$$$$| $$  | $$  | $$ __ | $$  | $$ _\$$$$$$\  | $$ __  /      $$| $$   \$$ | $$ __ 
+#   | $$  | $$| $$__/ $$  | $$|  \| $$__/ $$|  \__| $$  | $$|  \|  $$$$$$$| $$       | $$|  \
+#   | $$  | $$ \$$    $$   \$$  $$ \$$    $$ \$$    $$   \$$  $$ \$$    $$| $$        \$$  $$
+#    \$$   \$$  \$$$$$$     \$$$$   \$$$$$$   \$$$$$$     \$$$$   \$$$$$$$ \$$         \$$$$ 
+#                                                                                            
 
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
-
-
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
-wmname = "LG3D"
 
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis
