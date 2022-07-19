@@ -28,8 +28,8 @@
 
 window {
     location:       center;
+    anchor:         center;
     width:          380;
-    y-offset:       -200;
     border-radius:  24px;
     
     background-color:   @bg0;
