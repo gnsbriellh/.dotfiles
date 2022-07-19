@@ -540,7 +540,7 @@ screens = [
                 widget.PulseVolume(
                     foreground = colors["12"],
                     limit_max_volume = True,
-                    step = 2,
+                    step = 1,
                     volume_app = "pulsemixer",
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e pulsemixer")}
                 ),
