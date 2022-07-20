@@ -75,6 +75,12 @@
         fi
         ln -sfnv $PWD/.config/Kvantum ~/.config/Kvantum
 
+    # lxappearane
+        if [ -d "$HOME/.config/gtk-3.0" ]; then
+            rm -r ~/.config/gtk-3.0
+        fi
+        ln -sfnv $PWD/.config/gtk-3.0 ~/.config/gtk-3.0
+
     # flameshot
         if [ -d "$HOME/.config/flameshot" ]; then
             rm -r ~/.config/flameshot
