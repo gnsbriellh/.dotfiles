@@ -68,6 +68,12 @@
             rm -r ~/.config/rofi
         fi
         ln -sfnv $PWD/.config/rofi ~/.config/rofi
+
+    # kvantum
+        if [ -d "$HOME/.config/Kvantum" ]; then
+            rm -r ~/.config/Kvantum
+        fi
+        ln -sfnv $PWD/.config/Kvantum ~/.config/Kvantum
     
     # volumeicon
         if [ -d "$HOME/.config/volumeicon" ]; then
