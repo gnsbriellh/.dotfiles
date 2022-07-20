@@ -101,7 +101,8 @@
     "explorer.compactFolders": false,
     // Zoom level
     "window.zoomLevel": 0,
-    // Confirm to Delete a File
+    // Confirm to Delete or Move a File
+    "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     // Use Login Shell on the Integrated Terminal
     "terminal.integrated.defaultProfile.linux": "bash",
