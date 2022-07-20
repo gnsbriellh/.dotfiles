@@ -74,6 +74,12 @@
             rm -r ~/.config/Kvantum
         fi
         ln -sfnv $PWD/.config/Kvantum ~/.config/Kvantum
+
+    # flameshot
+        if [ -d "$HOME/.config/flameshot" ]; then
+            rm -r ~/.config/flameshot
+        fi
+        ln -sfnv $PWD/.config/flameshot ~/.config/flameshot
     
     # volumeicon
         if [ -d "$HOME/.config/volumeicon" ]; then
