@@ -5,14 +5,14 @@
  *******************************************************************************/
 
 * {
-    bg0:    #2c313c;
-    bg1:    #2c313c;
+    bg0:    #2f343f;
+    bg1:    #2f343f;
     bg2:    #3D3D3D80;
-    bg3:    #E84A5F;
+    bg3:    #e05561;
     fg0:    #E6E6E6;
-    fg1:    #FFFFFF;
+    fg1:    #4aa5f0;
     fg2:    #D6E0F0;
-    fg3:    #D6E0F0;
+    fg3:    #4f5666;
 }
 
 * {
@@ -52,13 +52,13 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg2;
+    text-color: @fg1;
 }
 
 entry {
     placeholder:        " Search";
-    text-color: @fg3;
-    placeholder-color: @fg2;
+    text-color: @fg2;
+    placeholder-color: @fg3;
 }
 
 message {

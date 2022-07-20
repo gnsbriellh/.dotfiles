@@ -39,6 +39,7 @@ focus_on_window_activation = "smart"         # _NET_ACTIVATE_WINDOW Behavior
 reconfigure_screens        = True            # Automatic screen reconfiguration
 auto_minimize              = True            # Allow apps to auto-minimize themselves when losing focus
 myTerminal                 = "alacritty"     # Default terminal
+myMenu                     = "rofi -modi drun,run -show drun"
 wmname                     = "LG3D"          # Java.. thing..
 
 #    __    __                           _______   __                  __  __                               
@@ -168,7 +169,7 @@ keys = [
     ),
 
     # Rofi
-    Key([mod], "r", lazy.spawn("rofi -modi drun,run -show drun"),
+    Key([mod], "r", lazy.spawn(myMenu),
         desc = "Launch Rofi"
     ),
 
@@ -200,12 +201,12 @@ keys = [
 # Applets #
 
     # Audio
-    Key([], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -c 0 set PCM 0.5dB+")
+    Key([mod], "F3",
+        lazy.spawn("amixer -c 0 set PCM 1dB+")
     ),
 
-    Key([], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -c 0 set PCM 0.5dB-")
+    Key([mod], "F2",
+        lazy.spawn("amixer -c 0 set PCM 1dB-")
     ),
 
 #     ______                       __  __                      __      __                               
@@ -241,7 +242,7 @@ keys = [
         desc = "Launch Steam"
     ),
 
-    Key([mod], "d", lazy.spawn(myTerminal +" -e runrdp"),
+    Key([mod], "d", lazy.spawn("qtile run-cmd -g 󰢹 " + myTerminal + " -e runrdp"),
         desc = "Launch xfreerdp"
     ),
 ]
@@ -407,7 +408,7 @@ groups = [
 
     Group(
         name = "6",
-        label = "󰢹",
+        label = "󰍺",
         layout = "MonadTall"
     ),
 
@@ -464,7 +465,7 @@ for i in groups:
 
 widget_defaults = dict(
     background = colors["00"],
-    foreground = colors["08"],
+    foreground = colors["01"],
     font = "Hack NF Bold",
     fontsize = 12,
     padding = 0
@@ -499,8 +500,26 @@ screens = [
         top=bar.Bar(
             [
                 widget.Sep(
-                    padding= 2,
-                    foreground = colors["00"]
+                    padding= 8,
+                    foreground = colors["09"],
+                    background = colors["09"],
+                    mouse_callbacks = {"Button1": lazy.spawn(myMenu)}
+                ),
+
+                widget.TextBox(
+                    font = "Material Design Icons Desktop",
+                    background = colors["09"],
+                    fontsize = 18,
+                    foreground = colors["05"],
+                    text = icons["arch"],
+                    mouse_callbacks = {"Button1": lazy.spawn(myMenu)}
+                ),
+
+                widget.TextBox(
+                    foreground = colors["09"],
+                    fontsize = 32,
+                    text = "",
+                    mouse_callbacks = {"Button1": lazy.spawn(myMenu)}
                 ),
 
                 widget.GroupBox(
@@ -510,9 +529,9 @@ screens = [
                     block_highlight_text_color = colors["08"],
                     urgent_border = colors["10"],
                     urgent_text = colors["10"],
-                    highlight_color = colors["10"],
-                    this_current_screen_border = colors["06"],
-                    highlight_method = "block",
+                    highlight_color = colors["00"],
+                    this_current_screen_border = colors["14"],
+                    highlight_method = "line",
                     urgent_alert_method = "line",
                     borderwidth = 3,
                     rounded = True,
@@ -523,8 +542,14 @@ screens = [
                     padding = 4
                 ),
 
-                widget.WindowName(
+                widget.Sep(
+                    padding=5,
                     foreground = colors["00"],
+                    background = colors["00"]
+                ),
+
+                widget.WindowName(
+                    foreground = colors["02"],
                     for_current_screen = True,
                     format = " {name}",
                     max_chars = 85
@@ -532,13 +557,13 @@ screens = [
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["12"],
+                    foreground = colors["04"],
                     text= icons["volu"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e pulsemixer")}
                 ),
 
                 widget.PulseVolume(
-                    foreground = colors["12"],
+                    foreground = colors["04"],
                     limit_max_volume = True,
                     step = 1,
                     volume_app = "pulsemixer",
@@ -604,14 +629,14 @@ screens = [
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["14"],
+                    foreground = colors["06"],
                     text = icons["mem"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e htop")}
                 ),
 
                 widget.Memory(
                     format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    foreground = colors["14"],
+                    foreground = colors["06"],
                     mouse_callbacks = {"Button1": lazy.spawn(myTerminal + " -e htop")}
                 ),
 
@@ -621,14 +646,14 @@ screens = [
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["11"],
+                    foreground = colors["03"],
                     text = icons["pom"]
                 ),
 
                 widget.Pomodoro(
-                    color_active = colors["11"],
-                    color_inactive = colors["11"],
-                    color_break = colors["11"],
+                    color_active = colors["03"],
+                    color_inactive = colors["03"],
+                    color_break = colors["03"],
                     prefix_active = "",
                     prefix_break = "Take a Break ! ",
                     prefix_long_break = "Take a Break ! ",
@@ -644,13 +669,13 @@ screens = [
 
                 widget.TextBox(
                     **qtile_bar_icons,
-                    foreground = colors["04"],
+                    foreground = colors["07"],
                     text = icons["clo"]
                 ),
 
                 widget.Clock(
                     format = "%a %d - %I:%M %p",
-                    foreground = colors["04"]
+                    foreground = colors["07"]
                 ),
 
                 widget.Sep(
@@ -661,7 +686,7 @@ screens = [
 
                 widget.Sep(
                     padding = 20,
-                    foreground = colors["08"]
+                    foreground = colors["09"]
                 ),
 
                 widget.Systray(
@@ -698,7 +723,7 @@ screens = [
                     foreground = colors["00"]
                 )
             ],
-            size = 32,
+            size = 28,
             margin = [5, 5, 0, 5],
             background = colors["00"],
         ),
