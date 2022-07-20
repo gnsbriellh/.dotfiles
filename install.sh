@@ -76,8 +76,8 @@
         ln -sfnv $PWD/.config/volumeicon ~/.config/volumeicon
 
     # VSCode
-        ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/"Code - OSS"/User/settings.json
-        ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/"Code - OSS"/User/keybindings.json
+        ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/Code/User/settings.json
+        ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
 
     # Thunar
         if [  ! -d "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml" ]; then
