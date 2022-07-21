@@ -14,4 +14,4 @@
     flameshot                                                                           &   # Start flameshot (Screenshot tool)
     volumeicon                                                                          &   # Start volumeicon (Manage Volume)
     nm-applet                                                                           &   # Start nm-applet (Network Manager Applet)
-    #cbatticon                                                                           &   # Start cbatticon (Battery Status Applet)
+    #cbatticon                                                                          &   # Start cbatticon (Battery Status Applet)
