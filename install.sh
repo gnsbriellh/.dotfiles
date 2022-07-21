@@ -95,7 +95,7 @@
 
     # VSCode
         if [  ! -d "$HOME/.config/Code/User" ]; then
-            mkdir -vp ~/.config/Code/User
+            mkdir -p ~/.config/Code/User
         fi
         ln -sfnv $PWD/.config/Code/User/settings.json ~/.config/Code/User/settings.json
         ln -sfnv $PWD/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json
