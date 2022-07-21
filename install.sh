@@ -104,6 +104,9 @@
         if [ ! -d "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml" ]; then
             mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
         fi
+        if [ ! -d "$HOME/.config/Thunar" ]; then
+            mkdir -p ~/.config/Thunar
+        fi
         ln -sfnv $PWD/.config/Thunar/uca.xml ~/.config/Thunar/uca.xml
         ln -sfnv $PWD/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
